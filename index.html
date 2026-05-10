@@ -817,7 +817,8 @@
         <p class="project-summary">取代月報 PPT/Excel，為高層提供互動式財務分析介面，後續成為全所財務儀表板開發模板。</p>
         <div class="project-metrics">
           <div class="metric"><span class="metric-value">50+</span><span class="metric-label">使用者（高階管理層）</span></div>
-          <div class="metric"><span class="metric-value">→ 模板</span><span class="metric-label">成為全所開發標準</span></div>
+          <div class="metric"><span class="metric-value">8+</span><span class="metric-label">涵蓋財務指標</span></div>
+          <div class="metric"><span class="metric-value">全所</span><span class="metric-label">成為開發標準模板</span></div>
         </div>
         <a href="#" class="project-link" onclick="event.preventDefault(); openModal('p1')">查看詳情 <span class="project-link-arrow">→</span></a>
       </div>
@@ -834,8 +835,9 @@
         <div class="project-tech">Developed with Power BI</div>
         <p class="project-summary">涵蓋人力資源概況、離職率分析、英文證照統計、訓練預算追蹤，輔助管理層訂定招募策略。</p>
         <div class="project-metrics">
-          <div class="metric"><span class="metric-value">50+</span><span class="metric-label">使用者 (高階管理層)</span></div>
-          <div class="metric"><span class="metric-value">3</span><span class="metric-label">儀表板模組</span></div>
+          <div class="metric"><span class="metric-value">50+</span><span class="metric-label">目標使用者</span></div>
+          <div class="metric"><span class="metric-value">3</span><span class="metric-label">儀表板模組數</span></div>
+          <div class="metric"><span class="metric-value">10+</span><span class="metric-label">涵蓋人資指標</span></div>
         </div>
         <a href="#" class="project-link" onclick="event.preventDefault(); openModal('p2')">查看詳情 <span class="project-link-arrow">→</span></a>
       </div>
@@ -985,27 +987,30 @@ const projects = {
       { value: '8+', label: '涵蓋財務指標' },
       { value: '全所', label: '成為開發標準模板' }
     ],
+    headerColor: '#3E5F72',
     photos: ['年度/每月業績達成與成長率', 'NSR 產業與客戶分析', '各組 DSO 統計與上月相比', '各組逐月營收趨勢變化與月成長率', '各組每月審計/非審計客戶營收分析'],
     photoSrcs: ['finance_01.png', 'finance_02.png', 'finance_03.png', 'finance_04.png', 'finance_05.png']
   },
   p2: {
-    tag: 'Power BI · 人資分析',
+    tag: 'Power BI · 數據分析',
     title: '人力資源儀表板系列',
     subtitle: 'Deloitte 勤業眾信 · 2022–Present',
-    tech: 'Developed with Power BI · 4 Dashboards',
+    tech: 'Developed with Power BI · 3 Dashboards',
     overview: '開發涵蓋人力資源多個面向的儀表板系列，提供高階管理層在人力規劃、英文能力掌握與訓練預算追蹤的決策支援。',
     highlights: [
       '【人資概況】部門人力資源概況總覽、歷年趨勢與平均指標、離職率分析、目標與實際員額差距',
       '【英文證照】查詢同仁英文證照獲取數量、種類與分數，作為晉升參考指標',
-      '【預算使用】每月更新訓練預算使用狀況，供 Talent 掌握各組預算剩餘情況',
-      '人資儀表板因組織調整 + 新系統上線未正式啟用，但已完成真實資料驗證測試'
+      '【預算使用】每月更新訓練預算使用狀況，供 Talent 掌握各組預算剩餘情況'
     ],
     metrics: [
-      { value: '4', label: '儀表板模組' },
       { value: '50+', label: '目標使用者' },
-      { value: '3', label: '業務面向' }
+      { value: '3', label: '儀表板模組數' },
+      { value: '10+', label: '涵蓋人資指標' }
+      
     ],
-    photos: ['人資概況儀表板', '離職率分析頁面', '英文證照統計儀表板', '訓練預算使用儀表板']
+    headerColor: '#9B6040',
+    photos: ['【人資概況】人資概況儀表板', '【人資概況】離職率分析頁面', '【英文證照】英文證照統計儀表板', '【預算使用】訓練預算使用儀表板'],
+    photoSrcs: ['people_01.png', 'people_02.png', 'people_03.png', 'people_04.png']
   },
   p3: {
     tag: 'AI 素養 · PMO · 課程設計',
@@ -1027,6 +1032,7 @@ const projects = {
       { value: '7', label: '雙周培訓場次' },
       { value: '35', label: '實作任務完成數' }
     ],
+    headerColor: '#4A6550',
     photos: ['分級課程架構設計', 'Prompt 評分機制介面', 'Power BI 排名 Dashboard', 'AI 分享會現場']
   },
   p4: {
@@ -1049,6 +1055,7 @@ const projects = {
       { value: '800', label: '部門員工規模' },
       { value: '2', label: '競賽評選階段' }
     ],
+    headerColor: '#6B5C7A',
     photos: ['競賽主視覺設計', '時程管理甘特圖', '團隊分工架構', '活動現場紀錄']
   }
 };
@@ -1081,7 +1088,7 @@ function openModal(id) {
   const highlightsHTML = p.highlights.map(h => `<li>${h}</li>`).join('');
 
   modal.innerHTML = `
-    <div class="modal-header">
+    <div class="modal-header" style="background:${p.headerColor || 'var(--slate-dark)'};">
       <button class="modal-close" onclick="closeModal()">✕</button>
       <div class="modal-tag">${p.tag}</div>
       <div class="modal-title">${p.title}</div>
