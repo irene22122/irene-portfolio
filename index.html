@@ -475,6 +475,36 @@
     text-align: center; padding: 1rem;
     border: 1px dashed var(--slate-light);
   }
+  /* 實際圖片網格 */
+  .modal-photo-grid-real {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;
+    margin-top: 1rem;
+  }
+  /* 5 張圖：第一列 3 張、第二列 2 張置中 */
+  .modal-photo-grid-real.count-5 {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .modal-photo-grid-real.count-5 .modal-photo-real-item {
+    grid-column: span 2;
+  }
+  .modal-photo-grid-real.count-5 .modal-photo-real-item:nth-child(4),
+  .modal-photo-grid-real.count-5 .modal-photo-real-item:nth-child(5) {
+    grid-column: span 3;
+  }
+  .modal-photo-real-item {
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+    background: var(--beige-dark);
+  }
+  .modal-photo-real-item img {
+    width: 100%; height: auto; display: block;
+  }
+  .modal-photo-real-caption {
+    font-size: 0.7rem; color: var(--text-light);
+    padding: 0.45rem 0.8rem;
+    letter-spacing: 0.04em; border-top: 1px solid var(--beige-dark);
+  }
 
   /* ── ARTICLES ── */
   #articles { background: var(--beige); }
@@ -911,7 +941,7 @@
       <div class="contact-icon">🔗</div>
       <div>
         <div class="contact-label">LinkedIn</div>
-        <div class="contact-value"><a href="https://linkedin.com/in/irene-weng" target="_blank">linkedin.com — Irene Weng</a></div>
+        <div class="contact-value"><a href="https://www.linkedin.com/in/irene-weng-096727186/" target="_blank">linkedin.com — Irene Weng</a></div>
       </div>
     </div>
     <div class="contact-row" style="border:none">
@@ -946,19 +976,17 @@ const projects = {
     tech: 'Developed with Power BI',
     overview: '為取代原有 PPT/Excel 月報形式，開發供部門高階管理層（約 50 人）使用的互動式財務儀表板，提供跨產業、組別、審計與非審計、Priority Account 的營收趨勢交叉分析。',
     highlights: [
-      '涵蓋年度/每月業績達成與成長率（By Group）',
-      'NSR 產業與重點客戶分析（By Group）',
-      'DSO 統計及與上月相比（By Group）',
       '縮短每月 Excel 報表整理時間，提升財務數據趨勢洞察',
       '部分資訊作為績效獎金核撥依據',
       '後續更成為事務所財務儀表板開發之模板'
     ],
     metrics: [
       { value: '50+', label: '使用者（高階管理層）' },
-      { value: '月報', label: '取代 PPT/Excel 形式' },
+      { value: '8+', label: '涵蓋財務指標' },
       { value: '全所', label: '成為開發標準模板' }
     ],
-    photos: ['財務儀表板 — 業績達成頁', '財務儀表板 — NSR 分析頁', '財務儀表板 — DSO 統計頁', '（為保護公司機敏資訊，截圖已模糊化處理）']
+    photos: ['年度/每月業績達成與成長率', 'NSR 產業與客戶分析', '各組 DSO 統計與上月相比', '各組逐月營收趨勢變化與月成長率', '各組每月審計/非審計客戶營收分析'],
+    photoSrcs: ['finance_01.png', 'finance_02.png', 'finance_03.png', 'finance_04.png', 'finance_05.png']
   },
   p2: {
     tag: 'Power BI · 人資分析',
@@ -1030,9 +1058,21 @@ function openModal(id) {
   const overlay = document.getElementById('modalOverlay');
   const modal = document.getElementById('modal');
 
-  const photosHTML = p.photos.map(label =>
-    `<div class="modal-photo-slot">${label}<br><small style="opacity:0.6;margin-top:4px;display:block">📎 待上傳</small></div>`
-  ).join('');
+  let photoSectionHTML = '';
+  if (p.photoSrcs) {
+    const imgs = p.photoSrcs.map((src, i) => `
+      <div class="modal-photo-real-item">
+        <img src="${src}" alt="${p.photos[i]}">
+        <div class="modal-photo-real-caption">${p.photos[i]}</div>
+      </div>`
+    ).join('');
+    photoSectionHTML = `<div class="modal-photo-grid-real count-${p.photoSrcs.length}">${imgs}</div>`;
+  } else {
+    const slots = p.photos.map(label =>
+      `<div class="modal-photo-slot">${label}<br><small style="opacity:0.6;margin-top:4px;display:block">📎 待上傳</small></div>`
+    ).join('');
+    photoSectionHTML = `<div class="modal-photo-grid">${slots}</div>`;
+  }
 
   const metricsHTML = p.metrics.map(m =>
     `<div class="modal-metric"><div class="modal-metric-value">${m.value}</div><div class="modal-metric-label">${m.label}</div></div>`
@@ -1063,7 +1103,7 @@ function openModal(id) {
       </div>
       <div class="modal-section">
         <div class="modal-section-title">專案截圖</div>
-        <div class="modal-photo-grid">${photosHTML}</div>
+        ${photoSectionHTML}
       </div>
     </div>
   `;
