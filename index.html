@@ -476,6 +476,64 @@
     border: 1px dashed var(--slate-light);
   }
 
+  /* ── ARTICLES ── */
+  #articles { background: var(--beige); }
+  .articles-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;
+    max-width: 1100px;
+  }
+  /* gallery：6格圖片（封面故事） */
+  .modal-gallery {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+  }
+  .modal-gallery-slot {
+    aspect-ratio: 4/3;
+    background: var(--beige-dark);
+    border: 1px dashed var(--slate-light);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-light); font-size: 0.75rem; letter-spacing: 0.05em;
+  }
+  /* article cards：圖片 + 文字（其他類別） */
+  .modal-article-cards { display: flex; flex-direction: column; gap: 1.5rem; }
+  .modal-article-card {
+    display: grid; grid-template-columns: 200px 1fr;
+    border: 1px solid var(--beige-dark);
+    background: var(--beige);
+    overflow: hidden;
+  }
+  .modal-article-card-img {
+    background: var(--beige-dark);
+    border-right: 1px dashed var(--slate-light);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-light); font-size: 0.75rem; letter-spacing: 0.05em;
+    min-height: 160px;
+  }
+  .modal-article-card-body {
+    padding: 1.4rem;
+    display: flex; flex-direction: column; gap: 0.6rem;
+  }
+  .modal-article-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem; font-weight: 700; color: var(--slate-dark);
+  }
+  .modal-article-card-desc {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 0.87rem; line-height: 1.8; color: var(--text-mid);
+    flex: 1;
+  }
+  .modal-article-link {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--slate); font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1px solid var(--slate-light);
+    padding-bottom: 1px; align-self: flex-start;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .modal-article-link:hover { color: var(--accent); border-color: var(--accent); }
+  .modal-article-link-arrow { transition: transform 0.2s; }
+  .modal-article-link:hover .modal-article-link-arrow { transform: translateX(3px); }
+
   /* ── CONTACT ── */
   #contact {
     background: var(--slate-dark);
@@ -561,6 +619,7 @@
     <li><a href="#expertise">專長</a></li>
     <li><a href="#timeline">經歷</a></li>
     <li><a href="#projects">專案</a></li>
+    <li><a href="#articles">文章</a></li>
     <li><a href="#contact">聯繫</a></li>
   </ul>
 </nav>
@@ -745,8 +804,8 @@
         <div class="project-tech">Developed with Power BI</div>
         <p class="project-summary">涵蓋人力資源概況、離職率分析、英文證照統計、訓練預算追蹤，輔助管理層訂定招募策略。</p>
         <div class="project-metrics">
-          <div class="metric"><span class="metric-value">4</span><span class="metric-label">儀表板模組</span></div>
-          <div class="metric"><span class="metric-value">50+</span><span class="metric-label">使用者</span></div>
+          <div class="metric"><span class="metric-value">50+</span><span class="metric-label">使用者 (高階管理層)</span></div>
+          <div class="metric"><span class="metric-value">3</span><span class="metric-label">儀表板模組</span></div>
         </div>
         <a href="#" class="project-link" onclick="event.preventDefault(); openModal('p2')">查看詳情 <span class="project-link-arrow">→</span></a>
       </div>
@@ -780,7 +839,7 @@
       </div>
       <div class="project-card-body">
         <div class="project-tech">連續 4 年 · 目標管理 · 逐年優化</div>
-        <p class="project-summary">連續 4 年擔任部門創新競賽 PMO，主導預算、時程與 3–5 人核心團隊，從主視覺設計到活動執行全程參與。</p>
+        <p class="project-summary">連續 4 年擔任部門創新競賽 PMO，主導預算、時程並管理 3–5 人核心團隊，從主視覺設計到活動執行全程參與。</p>
         <div class="project-metrics">
           <div class="metric"><span class="metric-value">4</span><span class="metric-label">連續辦理屆次</span></div>
           <div class="metric"><span class="metric-value">800</span><span class="metric-label">部門規模（人）</span></div>
@@ -792,11 +851,43 @@
   </div>
 </section>
 
+<!-- ARTICLES -->
+<section id="articles">
+  <div class="section-label">Journalism Work</div>
+  <h2 class="section-title">精選文章</h2>
+  <div class="articles-grid">
+    <div class="expertise-card fade-up">
+      <div class="expertise-icon">📰</div>
+      <div class="expertise-name">封面故事 / Cover Story</div>
+      <div class="expertise-desc">精選重要議題或案例，規劃、採訪並完成萬字以上之封面故事撰寫</div>
+      <a href="#" class="project-link" style="margin-top:1.2rem;" onclick="event.preventDefault();openArticleModal('a1')">看更多 <span class="project-link-arrow">→</span></a>
+    </div>
+    <div class="expertise-card fade-up" style="transition-delay:0.1s">
+      <div class="expertise-icon">✈️</div>
+      <div class="expertise-name">海外採訪 / Overseas Reporting</div>
+      <div class="expertise-desc">獨立前往美國、新加坡並撰寫企業產品發布報導</div>
+      <a href="#" class="project-link" style="margin-top:1.2rem;" onclick="event.preventDefault();openArticleModal('a2')">看更多 <span class="project-link-arrow">→</span></a>
+    </div>
+    <div class="expertise-card fade-up" style="transition-delay:0.05s">
+      <div class="expertise-icon">🎙️</div>
+      <div class="expertise-name">CIO / CTO Talk</div>
+      <div class="expertise-desc">訪談企業高階管理層，挖掘企業轉型故事</div>
+      <a href="#" class="project-link" style="margin-top:1.2rem;" onclick="event.preventDefault();openArticleModal('a3')">看更多 <span class="project-link-arrow">→</span></a>
+    </div>
+    <div class="expertise-card fade-up" style="transition-delay:0.15s">
+      <div class="expertise-icon">📋</div>
+      <div class="expertise-name">Martech / IT 人才雙週報</div>
+      <div class="expertise-desc">長期追蹤 Martech / IT 人才等領域新聞，每雙周精選焦點內容</div>
+      <a href="#" class="project-link" style="margin-top:1.2rem;" onclick="event.preventDefault();openArticleModal('a4')">看更多 <span class="project-link-arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section id="contact">
   <div>
     <div class="section-label">Get In Touch</div>
-    <h2 class="section-title">聯繫我</h2>
+    <h2 class="section-title">聯繫方式</h2>
     <p class="contact-bio">
       具備跨域背景，對數位轉型、AI 應用與資料分析有持續的熱忱。歡迎在職涯合作、專案諮詢或交流想法方面聯繫。
     </p>
@@ -973,6 +1064,98 @@ function openModal(id) {
       <div class="modal-section">
         <div class="modal-section-title">專案截圖</div>
         <div class="modal-photo-grid">${photosHTML}</div>
+      </div>
+    </div>
+  `;
+
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+// ── Article modal data ──
+const articles = {
+  a1: {
+    tag: '封面故事 / Cover Story',
+    title: '封面故事',
+    desc: '精選重要議題或案例，規劃、採訪並完成萬字以上之封面故事撰寫。（說明文字待填入）',
+    layout: 'gallery',
+    count: 6
+  },
+  a2: {
+    tag: '海外採訪 / Overseas Reporting',
+    title: '海外採訪',
+    desc: '獨立前往美國、新加坡並撰寫企業產品發布報導。（說明文字待填入）',
+    layout: 'cards',
+    items: [
+      { title: '文章標題（待填入）', desc: '文章說明（待填入）', url: '#' },
+      { title: '文章標題（待填入）', desc: '文章說明（待填入）', url: '#' }
+    ]
+  },
+  a3: {
+    tag: 'CIO / CTO Talk',
+    title: 'CIO / CTO Talk',
+    desc: '訪談企業高階管理層，挖掘企業轉型故事。（說明文字待填入）',
+    layout: 'cards',
+    items: [
+      { title: '文章標題（待填入）', desc: '文章說明（待填入）', url: '#' },
+      { title: '文章標題（待填入）', desc: '文章說明（待填入）', url: '#' },
+      { title: '文章標題（待填入）', desc: '文章說明（待填入）', url: '#' },
+      { title: '文章標題（待填入）', desc: '文章說明（待填入）', url: '#' }
+    ]
+  },
+  a4: {
+    tag: 'Martech / IT 人才雙週報',
+    title: 'Martech / IT 人才雙週報',
+    desc: '長期追蹤 Martech / IT 人才等領域新聞，每雙周精選焦點內容。（說明文字待填入）',
+    layout: 'cards',
+    items: [
+      { title: '文章標題（待填入）', desc: '文章說明（待填入）', url: '#' },
+      { title: '文章標題（待填入）', desc: '文章說明（待填入）', url: '#' }
+    ]
+  }
+};
+
+function openArticleModal(id) {
+  const a = articles[id];
+  const overlay = document.getElementById('modalOverlay');
+  const modal = document.getElementById('modal');
+
+  let contentHTML = '';
+  if (a.layout === 'gallery') {
+    const slots = Array.from({ length: a.count }, (_, i) =>
+      `<div class="modal-gallery-slot">圖片 ${i + 1}</div>`
+    ).join('');
+    contentHTML = `<div class="modal-gallery">${slots}</div>`;
+  } else {
+    const cards = a.items.map((item, i) => `
+      <div class="modal-article-card">
+        <div class="modal-article-card-img">圖片 ${i + 1}</div>
+        <div class="modal-article-card-body">
+          <div class="modal-article-card-title">${item.title}</div>
+          <div class="modal-article-card-desc">${item.desc}</div>
+          <a class="modal-article-link" href="${item.url}" target="_blank" rel="noopener">
+            閱讀文章 <span class="modal-article-link-arrow">→</span>
+          </a>
+        </div>
+      </div>`
+    ).join('');
+    contentHTML = `<div class="modal-article-cards">${cards}</div>`;
+  }
+
+  modal.innerHTML = `
+    <div class="modal-header">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-tag">${a.tag}</div>
+      <div class="modal-title">${a.title}</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">系列介紹</div>
+        <p>${a.desc}</p>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">精選文章</div>
+        ${contentHTML}
       </div>
     </div>
   `;
