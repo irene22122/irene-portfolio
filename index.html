@@ -144,7 +144,8 @@
   .hero-photo-frame {
     width: 280px; height: 340px;
     background: var(--beige-dark);
-    border: 3px solid rgba(255,255,255,0.4);
+    border: 8px solid rgba(255,255,255,0.88);
+    border-radius: 14px;
     position: relative;
     display: flex; align-items: center; justify-content: center;
     overflow: hidden;
@@ -504,6 +505,16 @@
   }
   .fade-up.visible { opacity: 1; transform: none; }
 
+  .hero-mobile-photo {
+    display: none;
+    width: 80px; height: 80px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 10px;
+    flex-shrink: 0;
+    border: 3px solid rgba(255,255,255,0.55);
+  }
+
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
     #hero { grid-template-columns: 1fr; min-height: auto; }
@@ -515,6 +526,10 @@
     .projects-grid { grid-template-columns: 1fr; }
     #contact { grid-template-columns: 1fr; }
     footer { flex-direction: column; gap: 0.5rem; }
+    .hero-name-row { display: flex; align-items: center; gap: 1.2rem; margin-bottom: 2rem; }
+    .hero-name-row .hero-name { margin-bottom: 0.2rem; }
+    .hero-name-row .hero-name-en { margin-bottom: 0; }
+    .hero-mobile-photo { display: block; }
   }
 </style>
 </head>
@@ -536,8 +551,13 @@
   <div class="hero-bg-pattern"></div>
   <div class="hero-left fade-up">
     <span class="hero-eyebrow">Portfolio · 作品集</span>
-    <h1 class="hero-name">翁芊儒</h1>
-    <p class="hero-name-en">Irene Weng</p>
+    <div class="hero-name-row">
+      <img class="hero-mobile-photo" src="photo.intro.png" alt="Irene Weng">
+      <div>
+        <h1 class="hero-name">翁芊儒</h1>
+        <p class="hero-name-en">Irene Weng</p>
+      </div>
+    </div>
     <div class="hero-title-tags">
       <span class="tag">數位轉型 PM</span>
       <span class="tag">Power BI 分析</span>
