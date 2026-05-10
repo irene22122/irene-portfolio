@@ -278,6 +278,21 @@
     font-size: 0.87rem; line-height: 1.85;
     color: var(--text-mid);
   }
+  .timeline-list {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 0.6rem;
+    margin-top: 0.2rem;
+  }
+  .timeline-list li {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 0.87rem; line-height: 1.85;
+    color: var(--text-mid);
+    padding-left: 1.2rem; position: relative;
+  }
+  .timeline-list li::before {
+    content: '›'; position: absolute; left: 0;
+    color: var(--accent); font-weight: 700;
+  }
 
   /* ── PROJECTS ── */
   #projects { background: var(--warm-white); }
@@ -647,7 +662,14 @@
       <div class="timeline-content">
         <div class="timeline-role">內部數位轉型與創新 專案經理</div>
         <div class="timeline-company">Deloitte 勤業眾信 Consulting Businesses</div>
-        <div class="timeline-desc">開發 4 套 Power BI 儀表板，主導 AI 素養培訓計畫（觸及約 300 人），連續 4 年擔任創新競賽 PMO，並推動 RPA 流程自動化。財務儀表板後續成為全所開發模板。</div>
+        <ul class="timeline-list">
+          <li>開發 4 套 Power BI 儀表板上線，其中於部門內上線之財務儀表板，取代原本 PPT/Excel 形式的月報，提供高階主管互動式介面，交叉分析產業 / 組別 / 審計與非審計 / Priority Account 的營收趨勢變化。後續更成為事務所財務儀表板開發之模板</li>
+          <li>擔任 AI 素養計畫 PMO，設計分級之 AI 線上課程與實作任務，課程總觸及約 300 人，並利用 ChatGPT 與 VBA 開發簡易 Prompt 評分機制，再以 Dashboard 呈現雙周各組排名變化。計畫結束後，於 AP Talent 會議上分享 AI Literacy 計畫辦理經驗與成果</li>
+          <li>擔任 4 屆內部創新競賽 PMO，主導預算管理與競賽時程，並帶領 3-5 人團隊規劃系列活動與工作坊，也實際參與主視覺設計、同仁 / 講師 / 評審溝通、追蹤隊伍之提案發展與落地成效等</li>
+          <li>擔任部門春酒專案 PMO，領導跨 6 個組別、超過 15 人的中型團隊，辦理 800 人之春酒活動，有效進行進度與目標管理</li>
+          <li>測試 AI 相關工具以進行內部推廣，如 Auto ML 平台 Decanter AI、公有雲 AI 服務 Azure OpenAI、自動化工作流平台 n8n、市售 AI 訂閱軟體等</li>
+          <li>主導秘書 / 永續業務流程優化之 RPA 導入，如實際將秘書 Backlog 彙整流程，從原先人工整理之 90 分鐘縮短為 15 分鐘</li>
+        </ul>
       </div>
     </div>
     <div class="timeline-item fade-up" style="transition-delay:0.1s">
@@ -656,7 +678,11 @@
       <div class="timeline-content">
         <div class="timeline-role">AI / IT 領域新聞記者</div>
         <div class="timeline-company">iThome 電腦報 編輯部</div>
-        <div class="timeline-desc">累積數百篇 AI、IT、網路隱私與企業數位轉型相關報導，獨立赴美國、新加坡採訪 IT 產品發表會，專訪多位企業 CIO、CTO 等高階主管。</div>
+        <ul class="timeline-list">
+          <li>累積數百篇 AI、IT、網路隱私與企業數位轉型相關報導，長期撰寫 Martech 雙周報、IT 人才雙周報，培養特定領域之新知敏銳度</li>
+          <li>曾獨立赴美國、新加坡參與 IT 產品發表會，具獨立採訪寫作能力，擅長從複雜資訊中梳理脈絡</li>
+          <li>曾專訪多位企業 CIO、CTO 等高階主管，練習從管理層的視野與經驗，培養獨立思考 / 策略溝通等軟實力</li>
+        </ul>
       </div>
     </div>
     <div class="timeline-item fade-up" style="transition-delay:0.2s">
@@ -665,7 +691,9 @@
       <div class="timeline-content">
         <div class="timeline-role">駐點行政助理</div>
         <div class="timeline-company">創蹟數位科技有限公司</div>
-        <div class="timeline-desc">支援金門客戶專案，負責專案管理、教育訓練與客服溝通，協助客戶導入與使用數位服務。</div>
+        <ul class="timeline-list">
+          <li>支援金門客戶專案，負責專案管理、教育訓練與客服溝通，協助客戶導入與使用數位服務。</li>
+        </ul>
       </div>
     </div>
     <div class="timeline-item fade-up" style="transition-delay:0.3s">
@@ -674,7 +702,9 @@
       <div class="timeline-content">
         <div class="timeline-role">新聞學系 學士</div>
         <div class="timeline-company">國立政治大學</div>
-        <div class="timeline-desc">培養深度報導、議題研究與跨領域溝通能力，為後續跨界 AI/IT 與數位轉型領域奠定基礎。</div>
+        <ul class="timeline-list">
+          <li>培養深度報導、議題研究與跨領域溝通能力，為後續跨界 AI/IT 與數位轉型領域奠定基礎。</li>
+        </ul>
       </div>
     </div>
   </div>
