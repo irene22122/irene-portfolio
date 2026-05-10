@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Irene Weng | 翁芊儒 — 數位轉型專案經理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Noto+Serif+TC:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --slate: #3E5F72;
+    --slate-dark: #2B4455;
+    --slate-light: #6A8FA3;
+    --beige: #F4EFE6;
+    --beige-dark: #E8DFD0;
+    --warm-white: #FAF8F4;
+    --text-dark: #1E2D38;
+    --text-mid: #4A5E6A;
+    --text-light: #8A9FA8;
+    --accent: #C4956A;
+    --accent-light: #DDB98A;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', 'Noto Serif TC', sans-serif;
+    background: var(--warm-white);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(250,248,244,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--beige-dark);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 700;
+    color: var(--slate-dark); letter-spacing: 0.04em;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.82rem; font-weight: 400; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--text-mid);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--slate); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+    background: var(--beige);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg-pattern {
+    position: absolute; top: 0; right: 0;
+    width: 55%; height: 100%;
+    background: linear-gradient(135deg, var(--slate) 0%, var(--slate-dark) 100%);
+    clip-path: polygon(12% 0, 100% 0, 100% 100%, 0% 100%);
+  }
+  .hero-left {
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 5rem 3rem 5rem 5rem;
+  }
+  .hero-eyebrow {
+    font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent); font-weight: 500; margin-bottom: 1.5rem;
+  }
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    font-weight: 900; line-height: 1.05;
+    color: var(--slate-dark);
+    margin-bottom: 0.3rem;
+  }
+  .hero-name-en {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 400; font-style: italic;
+    color: var(--slate-light); margin-bottom: 2rem;
+  }
+  .hero-title-tags {
+    display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2.5rem;
+  }
+  .tag {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    border: 1.5px solid var(--slate);
+    border-radius: 2px;
+    font-size: 0.78rem; letter-spacing: 0.08em;
+    color: var(--slate-dark); font-weight: 500;
+    background: transparent;
+  }
+  .hero-bio {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 0.95rem; line-height: 1.9;
+    color: var(--text-mid); max-width: 440px;
+    margin-bottom: 3rem;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+  .btn-primary {
+    padding: 0.9rem 2rem;
+    background: var(--slate);
+    color: white; font-size: 0.82rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    border: none; cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--slate-dark); transform: translateY(-2px); }
+  .btn-outline {
+    padding: 0.9rem 2rem;
+    background: transparent;
+    color: var(--slate-dark); font-size: 0.82rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    border: 1.5px solid var(--slate);
+    cursor: pointer; text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-outline:hover { background: var(--slate); color: white; transform: translateY(-2px); }
+
+  .hero-right {
+    position: relative; z-index: 2;
+    display: flex; align-items: center; justify-content: center;
+    padding: 5rem 4rem 5rem 2rem;
+  }
+  .hero-photo-frame {
+    width: 280px; height: 340px;
+    background: var(--beige-dark);
+    border: 3px solid rgba(255,255,255,0.4);
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    box-shadow: 20px 20px 0 rgba(62,95,114,0.25);
+  }
+  .hero-photo-frame img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .hero-photo-placeholder {
+    text-align: center; color: rgba(255,255,255,0.5);
+    font-size: 0.8rem; letter-spacing: 0.1em;
+    padding: 1rem;
+  }
+  .hero-photo-placeholder .icon { font-size: 2.5rem; margin-bottom: 0.5rem; display: block; }
+  .hero-stats {
+    position: absolute; bottom: -20px; left: -30px;
+    display: flex; flex-direction: column; gap: 0.8rem;
+  }
+  .stat-pill {
+    background: white;
+    padding: 0.6rem 1.2rem;
+    border-left: 3px solid var(--accent);
+    box-shadow: 4px 4px 16px rgba(0,0,0,0.1);
+    display: flex; gap: 0.8rem; align-items: baseline;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; font-weight: 700; color: var(--slate-dark);
+  }
+  .stat-label { font-size: 0.72rem; color: var(--text-mid); letter-spacing: 0.05em; }
+
+  /* ── SECTION BASE ── */
+  section { padding: 7rem 5rem; }
+  .section-label {
+    font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--accent); font-weight: 500; margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    font-weight: 700; color: var(--slate-dark);
+    line-height: 1.2; margin-bottom: 3rem;
+  }
+
+  /* ── EXPERTISE ── */
+  #expertise { background: var(--warm-white); }
+  .expertise-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+    max-width: 1100px;
+  }
+  .expertise-card {
+    padding: 2.5rem 2rem;
+    border: 1px solid var(--beige-dark);
+    background: var(--beige);
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .expertise-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(62,95,114,0.12); }
+  .expertise-card::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--slate-light);
+    transition: background 0.2s, width 0.2s;
+  }
+  .expertise-card:hover::before { background: var(--accent); width: 4px; }
+  .expertise-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+  .expertise-name {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1rem; font-weight: 500;
+    color: var(--slate-dark); margin-bottom: 0.6rem;
+  }
+  .expertise-desc { font-size: 0.83rem; line-height: 1.7; color: var(--text-mid); }
+
+  /* ── TIMELINE ── */
+  #timeline { background: var(--beige); }
+  .timeline-container { position: relative; max-width: 860px; }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 140px 28px 1fr;
+    gap: 0 0;
+    margin-bottom: 0;
+    position: relative;
+    align-items: stretch;
+  }
+  /* Date column */
+  .timeline-date {
+    font-size: 0.78rem; letter-spacing: 0.07em; line-height: 1.5;
+    color: var(--slate-light);
+    text-align: right;
+    padding: 0.2rem 1.4rem 0 0;
+    padding-top: 0.15rem;
+    white-space: nowrap;
+  }
+  /* Axis column */
+  .timeline-axis {
+    display: flex; flex-direction: column; align-items: center;
+    position: relative;
+  }
+  .timeline-dot {
+    width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0;
+    background: var(--warm-white); border: 2.5px solid var(--slate);
+    margin-top: 0.1rem;
+    transition: background 0.2s, border-color 0.2s;
+    z-index: 2; position: relative;
+  }
+  .timeline-item:hover .timeline-dot { background: var(--accent); border-color: var(--accent); }
+  .timeline-axis-line {
+    flex: 1; width: 1px;
+    background: var(--slate-light);
+    opacity: 0.45;
+    margin-top: 4px;
+  }
+  .timeline-item:last-child .timeline-axis-line { display: none; }
+  /* Content column */
+  .timeline-content {
+    padding: 0 0 3rem 1.6rem;
+  }
+  .timeline-role {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem; font-weight: 700;
+    color: var(--slate-dark); margin-bottom: 0.2rem;
+    line-height: 1.3;
+  }
+  .timeline-company {
+    font-size: 0.78rem; letter-spacing: 0.1em;
+    color: var(--accent); text-transform: uppercase; margin-bottom: 0.75rem;
+  }
+  .timeline-desc {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 0.87rem; line-height: 1.85;
+    color: var(--text-mid);
+  }
+
+  /* ── PROJECTS ── */
+  #projects { background: var(--warm-white); }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem; max-width: 1100px;
+  }
+  .project-card {
+    background: var(--beige);
+    border: 1px solid var(--beige-dark);
+    cursor: pointer;
+    transition: transform 0.25s, box-shadow 0.25s;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+  }
+  .project-card:hover { transform: translateY(-8px); box-shadow: 0 16px 48px rgba(62,95,114,0.15); }
+  .project-card-header {
+    background: var(--slate);
+    padding: 2rem 2rem 1.5rem;
+    position: relative; overflow: hidden;
+  }
+  .project-card-header::after {
+    content: '';
+    position: absolute; bottom: -20px; right: -20px;
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+  }
+  .project-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem; font-weight: 900;
+    color: rgba(255,255,255,0.15);
+    position: absolute; top: 0.8rem; right: 1.5rem;
+  }
+  .project-type-tag {
+    display: inline-block;
+    padding: 0.25rem 0.8rem;
+    background: rgba(255,255,255,0.15);
+    font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: rgba(255,255,255,0.8); margin-bottom: 0.8rem;
+  }
+  .project-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem; font-weight: 700;
+    color: white; line-height: 1.3;
+  }
+  .project-card-body { padding: 1.8rem 2rem; flex: 1; }
+  .project-tech {
+    font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent); font-weight: 500; margin-bottom: 0.8rem;
+  }
+  .project-summary {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 0.87rem; line-height: 1.8; color: var(--text-mid);
+    margin-bottom: 1.5rem;
+  }
+  .project-metrics {
+    display: flex; gap: 1.5rem; flex-wrap: wrap;
+    padding-top: 1.2rem; border-top: 1px solid var(--beige-dark);
+  }
+  .metric { display: flex; flex-direction: column; }
+  .metric-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 700; color: var(--slate);
+  }
+  .metric-label { font-size: 0.7rem; color: var(--text-light); margin-top: 0.1rem; }
+  .project-link {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    margin-top: 1.2rem;
+    font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--slate); font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1px solid var(--slate-light);
+    padding-bottom: 1px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .project-link:hover { color: var(--accent); border-color: var(--accent); }
+  .project-link-arrow { transition: transform 0.2s; }
+  .project-link:hover .project-link-arrow { transform: translateX(4px); }
+
+  /* ── MODAL ── */
+  .modal-overlay {
+    display: none; position: fixed;
+    inset: 0; z-index: 200;
+    background: rgba(30,45,56,0.85);
+    backdrop-filter: blur(6px);
+    overflow-y: auto;
+    padding: 2rem;
+    align-items: flex-start; justify-content: center;
+  }
+  .modal-overlay.active { display: flex; }
+  .modal {
+    background: var(--warm-white);
+    max-width: 780px; width: 100%;
+    margin: auto;
+    position: relative;
+    animation: modalIn 0.3s ease;
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .modal-header {
+    background: var(--slate-dark);
+    padding: 3rem;
+    position: relative; overflow: hidden;
+  }
+  .modal-header::before {
+    content: '';
+    position: absolute; top: -40px; right: -40px;
+    width: 180px; height: 180px;
+    border-radius: 50%; border: 30px solid rgba(255,255,255,0.05);
+  }
+  .modal-close {
+    position: absolute; top: 1.5rem; right: 1.5rem;
+    background: rgba(255,255,255,0.12); border: none;
+    color: white; width: 36px; height: 36px;
+    cursor: pointer; font-size: 1.1rem;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  .modal-close:hover { background: rgba(255,255,255,0.22); }
+  .modal-tag {
+    display: inline-block;
+    padding: 0.25rem 0.8rem;
+    background: rgba(255,255,255,0.15);
+    font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: rgba(255,255,255,0.7); margin-bottom: 1rem;
+  }
+  .modal-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 700;
+    color: white; line-height: 1.2; margin-bottom: 0.5rem;
+  }
+  .modal-subtitle { font-size: 0.85rem; color: rgba(255,255,255,0.6); letter-spacing: 0.05em; }
+  .modal-body { padding: 3rem; }
+  .modal-section { margin-bottom: 2.5rem; }
+  .modal-section-title {
+    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent); font-weight: 600; margin-bottom: 1rem;
+    padding-bottom: 0.5rem; border-bottom: 1px solid var(--beige-dark);
+  }
+  .modal-section p {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 0.9rem; line-height: 1.9; color: var(--text-mid);
+    margin-bottom: 0.8rem;
+  }
+  .modal-list {
+    list-style: none; display: flex; flex-direction: column; gap: 0.7rem;
+  }
+  .modal-list li {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 0.88rem; line-height: 1.7; color: var(--text-mid);
+    padding-left: 1.2rem; position: relative;
+  }
+  .modal-list li::before {
+    content: '›'; position: absolute; left: 0;
+    color: var(--accent); font-weight: 700;
+  }
+  .modal-metrics-row {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    background: var(--beige); padding: 1.5rem;
+  }
+  .modal-metric { text-align: center; }
+  .modal-metric-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem; font-weight: 700; color: var(--slate);
+  }
+  .modal-metric-label { font-size: 0.72rem; color: var(--text-light); margin-top: 0.2rem; }
+  .modal-photo-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;
+    margin-top: 1rem;
+  }
+  .modal-photo-slot {
+    aspect-ratio: 4/3;
+    background: var(--beige-dark);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-light); font-size: 0.75rem; letter-spacing: 0.05em;
+    text-align: center; padding: 1rem;
+    border: 1px dashed var(--slate-light);
+  }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--slate-dark);
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center;
+  }
+  #contact .section-label { color: var(--accent-light); }
+  #contact .section-title { color: white; margin-bottom: 1.5rem; }
+  .contact-bio {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 0.92rem; line-height: 1.9;
+    color: rgba(255,255,255,0.65);
+  }
+  .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+  .contact-row {
+    display: flex; align-items: center; gap: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 1.2rem;
+  }
+  .contact-icon {
+    width: 42px; height: 42px;
+    border: 1px solid rgba(255,255,255,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; color: var(--accent-light);
+    flex-shrink: 0;
+  }
+  .contact-label { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+  .contact-value { color: white; font-size: 0.9rem; margin-top: 0.15rem; }
+  .contact-value a { color: var(--accent-light); text-decoration: none; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--text-dark); padding: 1.8rem 5rem;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  footer p { font-size: 0.75rem; color: rgba(255,255,255,0.3); letter-spacing: 0.08em; }
+
+  /* ── SCROLL ANIM ── */
+  .fade-up {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    #hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-bg-pattern { display: none; }
+    .hero-left { padding: 5rem 2rem 2rem; }
+    .hero-right { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .expertise-grid { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+    #contact { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 0.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Irene Weng / 翁芊儒</div>
+  <ul class="nav-links">
+    <li><a href="#expertise">專長</a></li>
+    <li><a href="#timeline">經歷</a></li>
+    <li><a href="#projects">專案</a></li>
+    <li><a href="#contact">聯繫</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-left fade-up">
+    <span class="hero-eyebrow">Portfolio · 作品集</span>
+    <h1 class="hero-name">翁芊儒</h1>
+    <p class="hero-name-en">Irene Weng</p>
+    <div class="hero-title-tags">
+      <span class="tag">數位轉型 PM</span>
+      <span class="tag">Power BI 分析</span>
+      <span class="tag">AI 課程設計</span>
+    </div>
+    <p class="hero-bio">
+      具備數位轉型、專案管理、資料分析與內容溝通的跨域背景。現任 Deloitte 內部數位轉型與創新 PM，擅長將複雜問題轉化為可執行方案。
+    </p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">查看專案</a>
+      <a href="#contact" class="btn-outline">聯繫我</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div style="position:relative;">
+      <div class="hero-photo-frame">
+        <div class="hero-photo-placeholder">
+          <span class="icon">🖼</span>
+          上傳個人照片<br>
+          <small style="opacity:0.6">(建議 600×720px)</small>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-pill">
+          <span class="stat-num">4+</span>
+          <span class="stat-label">Power BI<br>儀表板</span>
+        </div>
+        <div class="stat-pill">
+          <span class="stat-num">300+</span>
+          <span class="stat-label">AI 課程<br>觸及人數</span>
+        </div>
+        <div class="stat-pill">
+          <span class="stat-num">100+</span>
+          <span class="stat-label">IT 報導</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section id="expertise">
+  <div class="section-label">Core Skills</div>
+  <h2 class="section-title">核心專長</h2>
+  <div class="expertise-grid">
+    <div class="expertise-card fade-up">
+      <div class="expertise-icon">📊</div>
+      <div class="expertise-name">Power BI / 資料分析</div>
+      <div class="expertise-desc">開發供高階主管決策的互動式儀表板，將原始資料轉化為清晰的業務洞察，涵蓋財務、人資、預算等多元主題。</div>
+    </div>
+    <div class="expertise-card fade-up" style="transition-delay:0.1s">
+      <div class="expertise-icon">🚀</div>
+      <div class="expertise-name">數位轉型 / 大型活動 PMO</div>
+      <div class="expertise-desc">主導預算管理、跨部門協調與時程控管，連續 4 年辦理創新競賽，擅長在複雜情境下有效達成目標。</div>
+    </div>
+    <div class="expertise-card fade-up" style="transition-delay:0.2s">
+      <div class="expertise-icon">🤖</div>
+      <div class="expertise-name">AI 課程規劃與內容設計</div>
+      <div class="expertise-desc">設計分級 AI 學習課程與實作任務，建立評分機制，帶領 300+ 人完成 AI 素養培訓計畫。</div>
+    </div>
+    <div class="expertise-card fade-up" style="transition-delay:0.05s">
+      <div class="expertise-icon">⚙️</div>
+      <div class="expertise-name">RPA 流程優化</div>
+      <div class="expertise-desc">導入 RPA 自動化秘書與永續業務流程，將人工作業從 90 分鐘縮短至 15 分鐘。</div>
+    </div>
+    <div class="expertise-card fade-up" style="transition-delay:0.15s">
+      <div class="expertise-icon">✍️</div>
+      <div class="expertise-name">高階主管溝通與技術議題轉譯</div>
+      <div class="expertise-desc">曾任 iThome AI/IT 記者，累積百篇報導及 CIO/CTO 專訪，擅長將技術議題轉化為易懂的策略語言。</div>
+    </div>
+    <div class="expertise-card fade-up" style="transition-delay:0.25s">
+      <div class="expertise-icon">🎨</div>
+      <div class="expertise-name">活動主視覺設計與簡報製作</div>
+      <div class="expertise-desc">自主設計創新競賽主視覺與活動視覺，並製作高品質的業務簡報與提案素材。</div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <div class="section-label">Work Experience</div>
+  <h2 class="section-title">工作經歷</h2>
+  <div class="timeline-container">
+    <div class="timeline-item fade-up">
+      <div class="timeline-date">2022.10<br>— Today</div>
+      <div class="timeline-axis"><div class="timeline-dot"></div><div class="timeline-axis-line"></div></div>
+      <div class="timeline-content">
+        <div class="timeline-role">內部數位轉型與創新 專案經理</div>
+        <div class="timeline-company">Deloitte 勤業眾信 Consulting Businesses</div>
+        <div class="timeline-desc">開發 4 套 Power BI 儀表板，主導 AI 素養培訓計畫（觸及約 300 人），連續 4 年擔任創新競賽 PMO，並推動 RPA 流程自動化。財務儀表板後續成為全所開發模板。</div>
+      </div>
+    </div>
+    <div class="timeline-item fade-up" style="transition-delay:0.1s">
+      <div class="timeline-date">2019.03<br>— 2022.02</div>
+      <div class="timeline-axis"><div class="timeline-dot"></div><div class="timeline-axis-line"></div></div>
+      <div class="timeline-content">
+        <div class="timeline-role">AI / IT 領域新聞記者</div>
+        <div class="timeline-company">iThome 電腦報 編輯部</div>
+        <div class="timeline-desc">累積數百篇 AI、IT、網路隱私與企業數位轉型相關報導，獨立赴美國、新加坡採訪 IT 產品發表會，專訪多位企業 CIO、CTO 等高階主管。</div>
+      </div>
+    </div>
+    <div class="timeline-item fade-up" style="transition-delay:0.2s">
+      <div class="timeline-date">2018.11<br>— 2019.02</div>
+      <div class="timeline-axis"><div class="timeline-dot"></div><div class="timeline-axis-line"></div></div>
+      <div class="timeline-content">
+        <div class="timeline-role">駐點行政助理</div>
+        <div class="timeline-company">創蹟數位科技有限公司</div>
+        <div class="timeline-desc">支援金門客戶專案，負責專案管理、教育訓練與客服溝通，協助客戶導入與使用數位服務。</div>
+      </div>
+    </div>
+    <div class="timeline-item fade-up" style="transition-delay:0.3s">
+      <div class="timeline-date">2014<br>— 2018</div>
+      <div class="timeline-axis"><div class="timeline-dot"></div><div class="timeline-axis-line"></div></div>
+      <div class="timeline-content">
+        <div class="timeline-role">新聞學系 學士</div>
+        <div class="timeline-company">國立政治大學</div>
+        <div class="timeline-desc">培養深度報導、議題研究與跨領域溝通能力，為後續跨界 AI/IT 與數位轉型領域奠定基礎。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Selected Work</div>
+  <h2 class="section-title">精選專案</h2>
+  <div class="projects-grid">
+
+    <!-- Project 1 -->
+    <div class="project-card fade-up" onclick="openModal('p1')">
+      <div class="project-card-header">
+        <span class="project-num">01</span>
+        <div class="project-type-tag">Power BI · 資料分析</div>
+        <div class="project-title">財務儀表板<br>Financial Dashboard</div>
+      </div>
+      <div class="project-card-body">
+        <div class="project-tech">Developed with Power BI</div>
+        <p class="project-summary">取代月報 PPT/Excel，為高層提供互動式財務分析介面，後續成為全所財務儀表板開發模板。</p>
+        <div class="project-metrics">
+          <div class="metric"><span class="metric-value">50+</span><span class="metric-label">使用者（高階管理層）</span></div>
+          <div class="metric"><span class="metric-value">→ 模板</span><span class="metric-label">成為全所開發標準</span></div>
+        </div>
+        <a href="#" class="project-link" onclick="event.preventDefault(); openModal('p1')">查看詳情 <span class="project-link-arrow">→</span></a>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="project-card fade-up" style="transition-delay:0.1s" onclick="openModal('p2')">
+      <div class="project-card-header" style="background: #9B6040;">
+        <span class="project-num">02</span>
+        <div class="project-type-tag">Power BI · 人資分析</div>
+        <div class="project-title">人力資源儀表板<br>HR Dashboard</div>
+      </div>
+      <div class="project-card-body">
+        <div class="project-tech">Developed with Power BI</div>
+        <p class="project-summary">涵蓋人力資源概況、離職率分析、英文證照統計、訓練預算追蹤，輔助管理層訂定招募策略。</p>
+        <div class="project-metrics">
+          <div class="metric"><span class="metric-value">4</span><span class="metric-label">儀表板模組</span></div>
+          <div class="metric"><span class="metric-value">50+</span><span class="metric-label">使用者</span></div>
+        </div>
+        <a href="#" class="project-link" onclick="event.preventDefault(); openModal('p2')">查看詳情 <span class="project-link-arrow">→</span></a>
+      </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="project-card fade-up" style="transition-delay:0.05s" onclick="openModal('p3')">
+      <div class="project-card-header" style="background: #4A6550;">
+        <span class="project-num">03</span>
+        <div class="project-type-tag">AI 素養 · PMO · 課程設計</div>
+        <div class="project-title">AI 素養計畫 PMO<br>AI Literacy Program</div>
+      </div>
+      <div class="project-card-body">
+        <div class="project-tech">LinkedIn Learning · Power BI · VBA + ChatGPT</div>
+        <p class="project-summary">設計分級 AI 線上課程與實作挑戰任務，建立 Prompt 評分機制，以 Dashboard 呈現雙周排名，觸及約 300 人。</p>
+        <div class="project-metrics">
+          <div class="metric"><span class="metric-value">300</span><span class="metric-label">課程觸及人數</span></div>
+          <div class="metric"><span class="metric-value">7</span><span class="metric-label">雙周培訓場次</span></div>
+          <div class="metric"><span class="metric-value">35</span><span class="metric-label">實作任務完成數</span></div>
+        </div>
+        <a href="#" class="project-link" onclick="event.preventDefault(); openModal('p3')">查看詳情 <span class="project-link-arrow">→</span></a>
+      </div>
+    </div>
+
+    <!-- Project 4 -->
+    <div class="project-card fade-up" style="transition-delay:0.15s" onclick="openModal('p4')">
+      <div class="project-card-header" style="background: #6B5C7A;">
+        <span class="project-num">04</span>
+        <div class="project-type-tag">創新競賽 · 大型活動 PMO</div>
+        <div class="project-title">部門創新競賽 PMO<br>Innovation Competition</div>
+      </div>
+      <div class="project-card-body">
+        <div class="project-tech">連續 4 年 · 跨域團隊 · 全程主辦</div>
+        <p class="project-summary">連續 4 年擔任部門創新競賽 PMO，主導預算、時程與 3–5 人核心團隊，從主視覺設計到活動執行全程參與。</p>
+        <div class="project-metrics">
+          <div class="metric"><span class="metric-value">4</span><span class="metric-label">連續辦理屆次</span></div>
+          <div class="metric"><span class="metric-value">800</span><span class="metric-label">部門規模（人）</span></div>
+        </div>
+        <a href="#" class="project-link" onclick="event.preventDefault(); openModal('p4')">查看詳情 <span class="project-link-arrow">→</span></a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div>
+    <div class="section-label">Get In Touch</div>
+    <h2 class="section-title">聯繫我</h2>
+    <p class="contact-bio">
+      具備跨域背景，對數位轉型、AI 應用與資料分析有持續的熱忱。歡迎在職涯合作、專案諮詢或交流想法方面聯繫。
+    </p>
+  </div>
+  <div class="contact-info">
+    <div class="contact-row">
+      <div class="contact-icon">📧</div>
+      <div>
+        <div class="contact-label">Email</div>
+        <div class="contact-value"><a href="mailto:wengchien5@gmail.com.tw">wengchien5@gmail.com.tw</a></div>
+      </div>
+    </div>
+    <div class="contact-row">
+      <div class="contact-icon">📱</div>
+      <div>
+        <div class="contact-label">Phone</div>
+        <div class="contact-value">0938-311-293</div>
+      </div>
+    </div>
+    <div class="contact-row">
+      <div class="contact-icon">🔗</div>
+      <div>
+        <div class="contact-label">LinkedIn</div>
+        <div class="contact-value"><a href="https://linkedin.com/in/irene-weng" target="_blank">linkedin.com — Irene Weng</a></div>
+      </div>
+    </div>
+    <div class="contact-row" style="border:none">
+      <div class="contact-icon">🏆</div>
+      <div>
+        <div class="contact-label">Certification</div>
+        <div class="contact-value">AWS Certified AI Practitioner · TOEIC 900</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Irene Weng 翁芊儒 — Digital Transformation PM</p>
+  <p>Built with Claude AI</p>
+</footer>
+
+<!-- MODAL OVERLAY -->
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modal">
+    <!-- filled by JS -->
+  </div>
+</div>
+
+<script>
+// ── Modal data ──
+const projects = {
+  p1: {
+    tag: 'Power BI · 資料分析',
+    title: '財務儀表板',
+    subtitle: 'Deloitte 勤業眾信 · 2022–Present',
+    tech: 'Developed with Power BI',
+    overview: '為取代原有 PPT/Excel 月報形式，開發供部門高階管理層（約 50 人）使用的互動式財務儀表板，提供跨產業、組別、審計與非審計、Priority Account 的營收趨勢交叉分析。',
+    highlights: [
+      '涵蓋年度/每月業績達成與成長率（By Group）',
+      'NSR 產業與重點客戶分析（By Group）',
+      'DSO 統計及與上月相比（By Group）',
+      '縮短每月 Excel 報表整理時間，提升財務數據趨勢洞察',
+      '部分資訊作為績效獎金核撥依據',
+      '後續更成為事務所財務儀表板開發之模板'
+    ],
+    metrics: [
+      { value: '50+', label: '使用者（高階管理層）' },
+      { value: '月報', label: '取代 PPT/Excel 形式' },
+      { value: '全所', label: '成為開發標準模板' }
+    ],
+    photos: ['財務儀表板 — 業績達成頁', '財務儀表板 — NSR 分析頁', '財務儀表板 — DSO 統計頁', '（為保護公司機敏資訊，截圖已模糊化處理）']
+  },
+  p2: {
+    tag: 'Power BI · 人資分析',
+    title: '人力資源儀表板系列',
+    subtitle: 'Deloitte 勤業眾信 · 2022–Present',
+    tech: 'Developed with Power BI · 4 Dashboards',
+    overview: '開發涵蓋人力資源多個面向的儀表板系列，提供高階管理層在人力規劃、英文能力掌握與訓練預算追蹤的決策支援。',
+    highlights: [
+      '【人資概況】部門人力資源概況總覽、歷年趨勢與平均指標、離職率分析、目標與實際員額差距',
+      '【英文證照】查詢同仁英文證照獲取數量、種類與分數，作為晉升參考指標',
+      '【預算使用】每月更新訓練預算使用狀況，供 Talent 掌握各組預算剩餘情況',
+      '人資儀表板因組織調整 + 新系統上線未正式啟用，但已完成真實資料驗證測試'
+    ],
+    metrics: [
+      { value: '4', label: '儀表板模組' },
+      { value: '50+', label: '目標使用者' },
+      { value: '3', label: '業務面向' }
+    ],
+    photos: ['人資概況儀表板', '離職率分析頁面', '英文證照統計儀表板', '訓練預算使用儀表板']
+  },
+  p3: {
+    tag: 'AI 素養 · PMO · 課程設計',
+    title: 'AI 素養計畫 PMO',
+    subtitle: 'Deloitte 勤業眾信 · AI Literacy Program',
+    tech: 'LinkedIn Learning · Power BI · VBA + ChatGPT',
+    overview: '擔任 AI 素養計畫 PMO，目標是教導約 800 名員工在安全、道德與合規前提下熟悉 Generative AI 技能，進而提升工作效率。透過 3 個月學習馬拉松，結合線上課程與 Prompt 實作挑戰，實際觸及約 300 人。',
+    highlights: [
+      '精選 LinkedIn Learning 學習資源，設計初/中/高階 AI 應用分級課程',
+      '設計團體賽、個人賽、AI Champion 積分累計機制',
+      '召集 AI Champion 設計 Prompt 實作挑戰題',
+      '利用 ChatGPT + VBA 開發簡易 Prompt 評分機制',
+      '以 Power BI Dashboard 呈現雙周各組排名變化',
+      '定期辦理 AI 分享會、發布 AI 焦點報報',
+      '計畫結束後，於 AP Talent 會議上分享成果'
+    ],
+    metrics: [
+      { value: '300', label: '課程觸及人數' },
+      { value: '7', label: '雙周培訓場次' },
+      { value: '35', label: '實作任務完成數' }
+    ],
+    photos: ['分級課程架構設計', 'Prompt 評分機制介面', 'Power BI 排名 Dashboard', 'AI 分享會現場']
+  },
+  p4: {
+    tag: '創新競賽 · 大型活動 PMO',
+    title: '部門創新競賽計畫 PMO',
+    subtitle: '連續 4 年 · Deloitte 勤業眾信',
+    tech: '全程主辦 · 主視覺設計 · 跨部門協調',
+    overview: '連續 4 年擔任部門創新競賽 PMO，鼓勵同仁發想業務創新與流程優化提案，並進行 POC 展示。每屆根據長官期許與上屆回饋相應調整賽制，持續優化競賽成效，並培養部門創新文化。',
+    highlights: [
+      '主導預算管理與競賽時程規劃',
+      '帶領 3–5 人核心團隊規劃系列活動與工作坊',
+      '實際參與主視覺設計',
+      '同仁、講師、評審三方溝通協調',
+      '追蹤隊伍提案發展與落地成效',
+      '參賽隊伍需歷經兩階段評選，於半年內完成提案 POC',
+      '每屆迭代改善，依當屆狀況與上屆回饋優化賽制'
+    ],
+    metrics: [
+      { value: '4', label: '連續辦理屆次' },
+      { value: '800', label: '部門員工規模' },
+      { value: '2', label: '競賽評選階段' }
+    ],
+    photos: ['競賽主視覺設計', '時程管理甘特圖', '團隊分工架構', '活動現場紀錄']
+  }
+};
+
+function openModal(id) {
+  const p = projects[id];
+  const overlay = document.getElementById('modalOverlay');
+  const modal = document.getElementById('modal');
+
+  const photosHTML = p.photos.map(label =>
+    `<div class="modal-photo-slot">${label}<br><small style="opacity:0.6;margin-top:4px;display:block">📎 待上傳</small></div>`
+  ).join('');
+
+  const metricsHTML = p.metrics.map(m =>
+    `<div class="modal-metric"><div class="modal-metric-value">${m.value}</div><div class="modal-metric-label">${m.label}</div></div>`
+  ).join('');
+
+  const highlightsHTML = p.highlights.map(h => `<li>${h}</li>`).join('');
+
+  modal.innerHTML = `
+    <div class="modal-header">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-tag">${p.tag}</div>
+      <div class="modal-title">${p.title}</div>
+      <div class="modal-subtitle">${p.subtitle}</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">專案概述</div>
+        <p>${p.overview}</p>
+        <div class="modal-metrics-row">${metricsHTML}</div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">執行亮點</div>
+        <ul class="modal-list">${highlightsHTML}</ul>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">使用技術 / 工具</div>
+        <p>${p.tech}</p>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">專案截圖</div>
+        <div class="modal-photo-grid">${photosHTML}</div>
+      </div>
+    </div>
+  `;
+
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// ── Scroll fade-in ──
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
